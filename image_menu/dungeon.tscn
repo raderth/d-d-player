@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://du1lbpqyiqlqw"]
+
+[ext_resource type="Script" path="res://image_menu/dungeon_scene.gd" id="1_htiqi"]
+[ext_resource type="Texture2D" uid="uid://fdkqlkdhixx8" path="res://terrain/dungeon/blank.png" id="2_4nxwg"]
+[ext_resource type="Texture2D" uid="uid://s7dub0pjaxtu" path="res://terrain/dungeon/chest.png" id="3_ungdh"]
+[ext_resource type="Texture2D" uid="uid://bll8cgqhp8cjs" path="res://terrain/dungeon/edge_close.png" id="4_prc32"]
+[ext_resource type="Texture2D" uid="uid://dqm71s7kc7a0w" path="res://terrain/dungeon/edge_corner.png" id="5_k25yp"]
+[ext_resource type="Texture2D" uid="uid://b7xycbq1d3m1c" path="res://terrain/dungeon/edge_far.png" id="6_q2v8m"]
+[ext_resource type="Texture2D" uid="uid://qrlj8580oq10" path="res://terrain/dungeon/rock_1.png" id="7_0nkgw"]
+[ext_resource type="Texture2D" uid="uid://bcage3uo6c3ox" path="res://terrain/dungeon/rock_2.png" id="8_erm4a"]
+
+[node name="dungeon" type="GridContainer"]
+columns = 3
+script = ExtResource("1_htiqi")
+
+[node name="blank" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("2_4nxwg")
+
+[node name="chest" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("3_ungdh")
+
+[node name="edge_close" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("4_prc32")
+
+[node name="edge_corner" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("5_k25yp")
+
+[node name="edge_far" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("6_q2v8m")
+
+[node name="rock_1" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("7_0nkgw")
+
+[node name="rock_2" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("8_erm4a")
+
+[connection signal="pressed" from="blank" to="." method="_on_blank_pressed"]
+[connection signal="pressed" from="chest" to="." method="_on_chest_pressed"]
+[connection signal="pressed" from="edge_close" to="." method="_on_edge_close_pressed"]
+[connection signal="pressed" from="edge_corner" to="." method="_on_edge_corner_pressed"]
+[connection signal="pressed" from="edge_far" to="." method="_on_edge_far_pressed"]
+[connection signal="pressed" from="rock_1" to="." method="_on_rock_1_pressed"]
+[connection signal="pressed" from="rock_2" to="." method="_on_rock_2_pressed"]

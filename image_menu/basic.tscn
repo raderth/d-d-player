@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bxg5ekndiatlq" path="res://terrain/mountains.png" id="5_14t11"]
 
 [node name="main" type="GridContainer"]
+columns = 2
 script = ExtResource("1_xou66")
 
 [node name="dark_plains" type="TextureButton" parent="."]

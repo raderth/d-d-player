@@ -13,5 +13,10 @@ text = "trees"
 layout_mode = 2
 text = "basic"
 
+[node name="dungeon" type="Button" parent="."]
+layout_mode = 2
+text = "dungeon"
+
 [connection signal="pressed" from="trees" to="." method="_on_trees_pressed"]
 [connection signal="pressed" from="basic" to="." method="_on_flat_pressed"]
+[connection signal="pressed" from="dungeon" to="." method="_on_dungeon_pressed"]

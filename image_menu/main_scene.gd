@@ -11,3 +11,7 @@ func _on_trees_pressed():
 
 func _on_flat_pressed():
 	emit_signal("change_scene", "basic")
+
+
+func _on_dungeon_pressed():
+	emit_signal("change_scene", "dungeon")

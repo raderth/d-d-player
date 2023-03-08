@@ -1,23 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://ot7g1l1f56as"]
+[gd_scene load_steps=11 format=3 uid="uid://ot7g1l1f56as"]
 
 [ext_resource type="Script" path="res://scripts/map.gd" id="1_gqdsc"]
-[ext_resource type="Script" path="res://scripts/CollisionShape2D.gd" id="2_ctshb"]
 [ext_resource type="Texture2D" uid="uid://jtfkhah44igl" path="res://highlight.png" id="2_gn1bn"]
 [ext_resource type="Script" path="res://scripts/grid_highlighter.gd" id="3_gte10"]
-[ext_resource type="Texture2D" uid="uid://ch0k8ej3irtrq" path="res://buttons/pen.png" id="4_s1cyf"]
 [ext_resource type="Script" path="res://image_menu/main_scene.gd" id="5_7jw6i"]
-[ext_resource type="Texture2D" uid="uid://du1l3vb4g83of" path="res://buttons/pen_selected.png" id="5_i133l"]
-[ext_resource type="Texture2D" uid="uid://cqtoddqx5dyci" path="res://buttons/eraser.png" id="6_ffyw6"]
-[ext_resource type="Script" path="res://scripts/pen.gd" id="6_k2tkn"]
-[ext_resource type="Texture2D" uid="uid://b7o8l0svev7ay" path="res://buttons/eraser_selected.png" id="7_v257s"]
 [ext_resource type="Texture2D" uid="uid://maemtfdy1lxv" path="res://buttons/image.png" id="8_lqp62"]
 [ext_resource type="Texture2D" uid="uid://chlvly1m4b46" path="res://buttons/image_selected.png" id="9_6puec"]
-[ext_resource type="Script" path="res://scripts/eraser.gd" id="9_ip8k4"]
+[ext_resource type="Texture2D" uid="uid://b8ldsbob5kriw" path="res://save.png" id="9_8up0f"]
+[ext_resource type="Script" path="res://FileDialog.gd" id="9_21cy7"]
 [ext_resource type="Script" path="res://scripts/image.gd" id="12_8yi10"]
 [ext_resource type="Script" path="res://scripts/Window.gd" id="13_ca1ks"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_va4at"]
-size = Vector2(79, 645)
 
 [node name="map" type="Node2D"]
 script = ExtResource("1_gqdsc")
@@ -83,64 +75,34 @@ grow_vertical = 2
 mouse_filter = 2
 columns = 15
 
-[node name="Panel" type="Panel" parent="CanvasLayer/ui/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ui/HBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="pen" type="TextureButton" parent="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer"]
+[node name="image" type="TextureButton" parent="CanvasLayer/ui/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 6
-texture_normal = ExtResource("4_s1cyf")
-texture_disabled = ExtResource("5_i133l")
-script = ExtResource("6_k2tkn")
-
-[node name="eraser" type="TextureButton" parent="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-texture_normal = ExtResource("6_ffyw6")
-texture_disabled = ExtResource("7_v257s")
-script = ExtResource("9_ip8k4")
-
-[node name="image" type="TextureButton" parent="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_lqp62")
 texture_disabled = ExtResource("9_6puec")
 script = ExtResource("12_8yi10")
 
-[node name="Area2D" type="Area2D" parent="CanvasLayer"]
+[node name="save" type="TextureButton" parent="CanvasLayer/ui/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_8up0f")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Area2D"]
-shape = SubResource("RectangleShape2D_va4at")
-script = ExtResource("2_ctshb")
+[node name="FileDialog" type="FileDialog" parent="CanvasLayer"]
+position = Vector2i(281, 90)
+size = Vector2i(598, 467)
+visible = true
+ok_button_text = "Save"
+access = 2
+script = ExtResource("9_21cy7")
 
 [connection signal="the_scale" from="." to="grid_highlighter" method="_on_map_the_scale"]
 [connection signal="close_requested" from="CanvasLayer/ui/Container/Window" to="." method="_on_window_close_requested"]
 [connection signal="close_requested" from="CanvasLayer/ui/Container/Window" to="CanvasLayer/ui/Container/Window" method="_on_close_requested"]
 [connection signal="pressed" from="CanvasLayer/ui/Container/Window/main/trees" to="CanvasLayer/ui/Container/Window/main" method="_on_trees_pressed" flags=18]
 [connection signal="pressed" from="CanvasLayer/ui/Container/Window/main/flat" to="CanvasLayer/ui/Container/Window/main" method="_on_flat_pressed" flags=18]
-[connection signal="pressed" from="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer/pen" to="." method="_on_pen_pressed"]
-[connection signal="pressed" from="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer/pen" to="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer/pen" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer/pen" to="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer/eraser" method="_on_pen_pressed"]
-[connection signal="pressed" from="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer/eraser" to="." method="_on_eraser_pressed"]
-[connection signal="pressed" from="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer/eraser" to="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer/pen" method="_on_eraser_pressed"]
-[connection signal="pressed" from="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer/eraser" to="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer/eraser" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer/image" to="." method="_on_image_pressed"]
-[connection signal="pressed" from="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer/image" to="CanvasLayer/ui/Container/Window" method="_on_image_pressed"]
-[connection signal="pressed" from="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer/image" to="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer/image" method="_on_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/ui/HBoxContainer/image" to="." method="_on_image_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ui/HBoxContainer/image" to="." method="_on_image_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/ui/HBoxContainer/image" to="." method="_on_image_pressed"]
+[connection signal="pressed" from="CanvasLayer/ui/HBoxContainer/image" to="CanvasLayer/ui/Container/Window" method="_on_image_pressed"]
+[connection signal="pressed" from="CanvasLayer/ui/HBoxContainer/image" to="CanvasLayer/ui/HBoxContainer/image" method="_on_pressed"]

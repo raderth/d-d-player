@@ -1,4 +1,5 @@
 <h1>Custom D&D player</h1>
+<h5>no beta yet :(</h5>
 
 <h2>Done so far</h2>
 made basic renderer!
@@ -15,3 +16,10 @@ made basic renderer!
 <li>save player positions and resume game later</li>
 <li>export and share your map!</li>
 </ul>
+
+<h2>controls</h2>
+<p> In Editor:</p>
+<p> right click to erase</p>
+<p> left click to place</p>
+<p> middle mouse to pan</p>
+<p> scoll to zoom</p>

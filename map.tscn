@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://cvb6eleywhtxg"]
+
+[ext_resource type="Script" path="res://scripts/map.gd" id="1_gqdsc"]
+[ext_resource type="Script" path="res://scripts/CollisionShape2D.gd" id="2_ctshb"]
+[ext_resource type="Texture2D" uid="uid://jtfkhah44igl" path="res://highlight.png" id="2_gn1bn"]
+[ext_resource type="Script" path="res://scripts/grid_highlighter.gd" id="3_gte10"]
+[ext_resource type="Texture2D" uid="uid://ch0k8ej3irtrq" path="res://buttons/pen.png" id="4_s1cyf"]
+[ext_resource type="Texture2D" uid="uid://du1l3vb4g83of" path="res://buttons/pen_selected.png" id="5_i133l"]
+[ext_resource type="Texture2D" uid="uid://cqtoddqx5dyci" path="res://buttons/eraser.png" id="6_ffyw6"]
+[ext_resource type="Texture2D" uid="uid://b7o8l0svev7ay" path="res://buttons/eraser_selected.png" id="7_v257s"]
+[ext_resource type="Texture2D" uid="uid://maemtfdy1lxv" path="res://buttons/image.png" id="8_lqp62"]
+[ext_resource type="Texture2D" uid="uid://chlvly1m4b46" path="res://buttons/image_selected.png" id="9_6puec"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_va4at"]
+size = Vector2(79, 645)
+
+[node name="map" type="Node2D"]
+script = ExtResource("1_gqdsc")
+
+[node name="grid_highlighter" type="Sprite2D" parent="."]
+z_index = 100
+texture = ExtResource("2_gn1bn")
+script = ExtResource("3_gte10")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ui" type="Control" parent="CanvasLayer"]
+z_index = 101
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="HBoxContainer" type="GridContainer" parent="CanvasLayer/ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+columns = 15
+
+[node name="Panel" type="Panel" parent="CanvasLayer/ui/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ui/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="pen" type="TextureButton" parent="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+mouse_filter = 2
+texture_normal = ExtResource("4_s1cyf")
+texture_disabled = ExtResource("5_i133l")
+
+[node name="eraser" type="TextureButton" parent="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+mouse_filter = 2
+texture_normal = ExtResource("6_ffyw6")
+texture_disabled = ExtResource("7_v257s")
+
+[node name="image" type="TextureButton" parent="CanvasLayer/ui/HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+mouse_filter = 2
+texture_normal = ExtResource("8_lqp62")
+texture_disabled = ExtResource("9_6puec")
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Area2D"]
+shape = SubResource("RectangleShape2D_va4at")
+script = ExtResource("2_ctshb")
+
+[connection signal="the_scale" from="." to="grid_highlighter" method="_on_map_the_scale"]
+[connection signal="mouse_entered" from="CanvasLayer/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Area2D" to="." method="_on_area_2d_mouse_exited"]

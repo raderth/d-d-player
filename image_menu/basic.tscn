@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5m83w8q11a2t"]
+
+[ext_resource type="Script" path="res://image_menu/flat_scene.gd" id="1_xou66"]
+[ext_resource type="Texture2D" uid="uid://ccjt4h2bgafir" path="res://terrain/dark_plains.png" id="2_j1rl0"]
+[ext_resource type="Texture2D" uid="uid://dpmxqq0lgkemr" path="res://terrain/plains.png" id="3_6iqoj"]
+[ext_resource type="Texture2D" uid="uid://ctq8gelkcrx5f" path="res://terrain/water.png" id="4_jtef6"]
+[ext_resource type="Texture2D" uid="uid://bxg5ekndiatlq" path="res://terrain/mountains.png" id="5_14t11"]
+
+[node name="main" type="GridContainer"]
+script = ExtResource("1_xou66")
+
+[node name="dark_plains" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("2_j1rl0")
+
+[node name="plains" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("3_6iqoj")
+
+[node name="water" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("4_jtef6")
+
+[node name="mountains" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("5_14t11")
+
+[connection signal="pressed" from="dark_plains" to="." method="_on_dark_plains_pressed"]
+[connection signal="pressed" from="plains" to="." method="_on_plains_pressed"]
+[connection signal="pressed" from="water" to="." method="_on_water_pressed"]
+[connection signal="pressed" from="mountains" to="." method="_on_mountains_pressed"]

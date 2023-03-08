@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://iw34wg3qfhqs"]
+
+[ext_resource type="Script" path="res://image_menu/main_scene.gd" id="1_cl5th"]
+
+[node name="main" type="GridContainer"]
+script = ExtResource("1_cl5th")
+
+[node name="trees" type="Button" parent="."]
+layout_mode = 2
+text = "trees"
+
+[node name="basic" type="Button" parent="."]
+layout_mode = 2
+text = "basic"
+
+[connection signal="pressed" from="trees" to="." method="_on_trees_pressed"]
+[connection signal="pressed" from="basic" to="." method="_on_flat_pressed"]

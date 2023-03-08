@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfbykhrxsonsr"]
+
+[ext_resource type="Script" path="res://image_menu/trees_scene.gd" id="1_46w1a"]
+[ext_resource type="Texture2D" uid="uid://g5iufwhxbgol" path="res://terrain/scrub_forest/scrub_forest_1.png" id="2_y6com"]
+[ext_resource type="Texture2D" uid="uid://ba1pq0n0fodni" path="res://terrain/conifer_forest/conifer_forest_outer_extra_1.png" id="3_7j560"]
+
+[node name="trees" type="GridContainer"]
+script = ExtResource("1_46w1a")
+
+[node name="scrub" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("2_y6com")
+
+[node name="conifer" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("3_7j560")
+
+[connection signal="pressed" from="scrub" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="conifer" to="." method="_on_conifer_pressed"]

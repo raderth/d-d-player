@@ -10,6 +10,7 @@ var used_positions_1 = []
 var used_positions_2 = []
 var blocked = false
 var blocked_by_window = false
+var blocked_by_file = false
 var children = []
 var directory
 var files
@@ -53,7 +54,7 @@ func _process(delta):
 		if my_rotation == 360:
 			my_rotation = 0
 	#placing tiles
-	if Input.is_action_pressed("click") and not blocked_by_window and not blocked:
+	if Input.is_action_pressed("click") and not blocked_by_window and not blocked and not blocked_by_file:
 		var tile_position = (get_global_mouse_position() - position).snapped(Vector2(tile_size,tile_size))
 		var used = false
 		if layer == 1:
@@ -83,7 +84,7 @@ func _process(delta):
 		#I've made it so tiles aren't placed every frame if the player holds down click, but if click is not held this gets reset so more tiles can be placed over
 		used_positions_1 = []
 		used_positions_2 = []
-	if Input.is_action_pressed("right_click") and not blocked_by_window and not blocked:
+	if Input.is_action_pressed("right_click") and not blocked_by_window and not blocked and not blocked_by_file:
 		var tile_position = (get_global_mouse_position() - position).snapped(Vector2(tile_size,tile_size))
 		for child in children:
 			if round(child.position) == round(tile_position):
@@ -137,3 +138,26 @@ func _on_image_mouse_entered():
 
 func _on_image_mouse_exited():
 	blocked = false
+
+
+func _on_file_dialog_file_dialog_open(is_open):
+	blocked_by_file = is_open
+
+var file_name = "my_level.txt"
+var data = {}
+
+
+
+func _on_file_dialog_directory(path):
+	var pos_mod = 1/my_scale
+	my_scale = 1
+	emit_signal("the_scale",my_scale,pos_mod)
+	tile_size *= pos_mod
+	for child in children:
+		child.scale = Vector2(my_scale,my_scale)
+		child.position *= pos_mod
+	for child in children:
+		data[child.position] = child.texture.resource_path
+		
+	var file = FileAccess.open("C:/"+path, FileAccess.WRITE)
+	file.store_line(JSON.new().stringify(data))

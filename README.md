@@ -23,3 +23,4 @@ made basic renderer!
 <p> left click to place</p>
 <p> middle mouse to pan</p>
 <p> scoll to zoom</p>
+<p>r to rotate tile</p>

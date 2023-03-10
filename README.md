@@ -7,18 +7,17 @@
 
 ## Done so far
 
-<p>made basic renderer!</p>
-<img style="width:50%" src="https://cdn.discordapp.com/attachments/840918041592070154/1083118983424774154/Slice_56_14.png">
-<img style="width:50%" src="https://cdn.discordapp.com/attachments/840918041592070154/1083139229183381545/Slice_56_6.png">
+<p>made basic renderer along with a main menu and saves</p>
+<img style="width:50%" src="https://cdn.discordapp.com/attachments/840918041592070154/1083852372117311559/Slice_61.png">
+<img style="width:50%" src="https://cdn.discordapp.com/attachments/840918041592070154/1083853434228314202/Slice_61_1.png">
 
 ## planned features
 - Fights
-- custom tiles
 - Dm control panel
 - multiplayer connectivity to view the map
 - website for smart tv display of map
 - save player positions and resume game later
-- export and share your map!
+- export and share your map! __DONE
 
 
 ## controls

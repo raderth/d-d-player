@@ -1,35 +1,32 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://blaq7x4kkgwyl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_swdck"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0.827451, 0.996078, 1)
+bg_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.94902, 1, 0.996078, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-expand_margin_left = 100.0
-expand_margin_right = 100.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2g3v"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0.827451, 0.996078, 1)
+bg_color = Color(0.113725, 0.113725, 0.113725, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.94902, 1, 0.996078, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-expand_margin_left = 100.0
-expand_margin_right = 100.0
 
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_color = Color(1, 1, 1, 1)
 Button/styles/hover = SubResource("StyleBoxFlat_swdck")
 Button/styles/normal = SubResource("StyleBoxFlat_q2g3v")
+Button/styles/pressed = SubResource("StyleBoxFlat_q2g3v")

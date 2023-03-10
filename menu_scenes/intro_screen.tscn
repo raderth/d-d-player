@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://de7c8svm8ate7"]
+[gd_scene load_steps=8 format=3 uid="uid://de7c8svm8ate7"]
 
-[ext_resource type="Script" path="res://AnimationPlayer.gd" id="1_i6dws"]
-[ext_resource type="Texture2D" uid="uid://cogy8puvmfcs0" path="res://logo.svg" id="2_mmjvx"]
-[ext_resource type="PackedScene" uid="uid://41yurfv6r8ku" path="res://main_buttons.tscn" id="3_5xb5y"]
+[ext_resource type="Script" path="res://menu_scenes/intro_screen.gd" id="1_6hy4x"]
+[ext_resource type="Script" path="res://AnimationPlayer.gd" id="2_xvurg"]
+[ext_resource type="Texture2D" uid="uid://cogy8puvmfcs0" path="res://logo.svg" id="3_2j63v"]
+[ext_resource type="PackedScene" uid="uid://ynt5ge6n6hs7" path="res://menu_scenes/main_buttons.tscn" id="4_v45vg"]
 
 [sub_resource type="Animation" id="Animation_mslbm"]
 length = 0.001
@@ -40,7 +41,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_7wrmy"]
@@ -77,10 +78,10 @@ tracks/2/path = NodePath("CanvasLayer/main_buttons:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.9, 2.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.9, 1.4, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(0, 0, 0, 0), Color(0.2, 0.2, 0.2, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6u0ag"]
@@ -97,15 +98,16 @@ anchors_preset = 0
 libraries = {
 "": SubResource("AnimationLibrary_6u0ag")
 }
-script = ExtResource("1_i6dws")
+script = ExtResource("2_xvurg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_6hy4x")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
 z_index = 1
 position = Vector2(567, 318)
 scale = Vector2(0.378274, 0.378274)
-texture = ExtResource("2_mmjvx")
+texture = ExtResource("3_2j63v")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -117,6 +119,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="main_buttons" parent="CanvasLayer" instance=ExtResource("3_5xb5y")]
-modulate = Color(1, 1, 1, 0)
+[node name="main_buttons" parent="CanvasLayer" instance=ExtResource("4_v45vg")]
+modulate = Color(0, 0, 0, 1)
 z_index = 2

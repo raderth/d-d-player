@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://41yurfv6r8ku"]
+[gd_scene load_steps=3 format=3 uid="uid://ynt5ge6n6hs7"]
 
-[ext_resource type="Theme" uid="uid://blaq7x4kkgwyl" path="res://main_theme.tres" id="1_olkod"]
+[ext_resource type="Script" path="res://menu_scenes/main_buttons.gd" id="1_rj5ub"]
+[ext_resource type="Theme" uid="uid://blaq7x4kkgwyl" path="res://menu_scenes/main_theme.tres" id="2_e520s"]
 
 [node name="main_buttons" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rj5ub")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -23,15 +25,19 @@ layout_mode = 2
 
 [node name="Join" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_olkod")
+theme = ExtResource("2_e520s")
 text = "Join"
 
 [node name="Host" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_olkod")
+theme = ExtResource("2_e520s")
 text = "Host"
 
 [node name="Create Campaign" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_olkod")
+theme = ExtResource("2_e520s")
 text = "Create Campaign"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Create Campaign" to="." method="_on_create_campaign_pressed"]

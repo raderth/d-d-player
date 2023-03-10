@@ -101,6 +101,7 @@ func _process(delta):
 		position += direction
 	old_pos = get_global_mouse_position()
 	
+	
 	#ZOOOOOOM
 	var scale_change = false
 	var pos_mod

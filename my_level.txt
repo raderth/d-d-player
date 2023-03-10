@@ -1,7 +1,0 @@
-[data]
-
-data={
-Vector2(128, 64): "res://terrain/dark_plains.png",
-Vector2(384, 320): "res://terrain/dark_plains.png",
-Vector2(448, 320): "res://terrain/dark_plains.png"
-}

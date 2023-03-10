@@ -27,6 +27,7 @@ func _ready():
 	get_node("CanvasLayer/ui/Container/Window").change_texture.connect(texture_swap)
 
 func texture_swap(my_sprite,random,my_layer):
+	blocked = false
 	blocked_by_window = false
 	if not random:
 		texture = "res://terrain/{text}.png".format({"text": my_sprite})
@@ -142,6 +143,13 @@ func _on_image_mouse_exited():
 
 func _on_file_dialog_file_dialog_open(is_open):
 	blocked_by_file = is_open
+	
+
+func _on_save_mouse_entered():
+	blocked_by_file = true
+	
+func _on_save_mouse_exited():
+	blocked_by_file = false
 
 var file_name = "my_level.txt"
 var data = {}
@@ -161,3 +169,4 @@ func _on_file_dialog_directory(path):
 		
 	var file = FileAccess.open("C:/"+path, FileAccess.WRITE)
 	file.store_line(JSON.new().stringify(data))
+

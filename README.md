@@ -17,6 +17,7 @@
 </p>
 
 <h2 align="center">planned features</h2>
+
 - Fights
 - Dm control panel
 - multiplayer connectivity to view the map

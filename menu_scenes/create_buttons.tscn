@@ -42,7 +42,7 @@ text = "Back"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="FileDialog" type="FileDialog" parent="CanvasLayer"]
-title = "Open a folder of levels or one level"
+title = "Open a File or Directory"
 position = Vector2i(264, 128)
 size = Vector2i(629, 433)
 unresizable = true
@@ -54,3 +54,5 @@ script = ExtResource("3_oal05")
 [connection signal="pressed" from="CenterContainer/VBoxContainer/New" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Load" to="CanvasLayer/FileDialog" method="_on_load_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="confirmed" from="CanvasLayer/FileDialog" to="CanvasLayer/FileDialog" method="_on_confirmed"]
+[connection signal="load_scene" from="CanvasLayer/FileDialog" to="." method="_on_file_dialog_load_scene"]

@@ -24,7 +24,25 @@ var is_random = false
 var layer = 1
 
 func _ready():
+	var data_json
 	get_node("CanvasLayer/ui/Container/Window").change_texture.connect(texture_swap)
+	var path = "C:"+Constants.get_load_path()
+	if path != "":
+		var file = FileAccess.open(path, FileAccess.READ)
+		if not file == null:
+			var test_json_conv = JSON.new()
+			test_json_conv.parse(file.get_as_text())
+			data_json = test_json_conv.get_data()
+			
+	if data_json != null:
+		for i in data_json:
+			var child = Sprite2D.new()
+			add_child(child)
+			child.texture = load(data_json[i])
+			var the_pos = i.replace("(","").replace(")","").split(",")
+			child.position = Vector2(int(the_pos[0]),int(the_pos[1]))
+			children.append(child)
+	
 
 func texture_swap(my_sprite,random,my_layer):
 	blocked = false

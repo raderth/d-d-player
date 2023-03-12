@@ -17,6 +17,10 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://logo.svg"
 config/icon="res://icon.svg"
 
+[autoload]
+
+Constants="*res://constants.gd"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"

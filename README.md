@@ -1,6 +1,6 @@
 
 
-![enter image description here](https://cdn.discordapp.com/attachments/840918041592070154/1083836567963062294/Slice_59.png)
+![enter image description here](https://cdn.discordapp.com/attachments/840918041592070154/1084551948935635084/Slice_58_2.png)
 
 
 *no beta yet :(*

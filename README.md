@@ -8,9 +8,9 @@
 
 <h2 align="center">Done so far</h2>
 
-<p>made basic renderer along with a main menu and saves</p>
+<p>made renderer along with a main menu and saves</p>
 <p align="center">
-<img style="width:50%" src="https://cdn.discordapp.com/attachments/840918041592070154/1083853434228314202/Slice_61_1.png">
+<img style="width:50%" src="https://cdn.discordapp.com/attachments/840918041592070154/1084973134354059304/image.png">
 </p>
 <p align="center">
 <img style="width:50%" src="https://cdn.discordapp.com/attachments/840918041592070154/1084552377580912730/Slice_61_2.png">

@@ -25,7 +25,8 @@ var layer = 1
 
 func _ready():
 	var data_json
-	get_node("CanvasLayer/ui/Container/Window").change_texture.connect(texture_swap)
+	get_node("CanvasLayer/ui/Container/Window/main").texture_switch.connect(texture_swap)
+	#load a level
 	var path = "C:"+Constants.get_load_path()
 	if path != "":
 		var file = FileAccess.open(path, FileAccess.READ)
@@ -44,27 +45,15 @@ func _ready():
 			children.append(child)
 	
 
-func texture_swap(my_sprite,random,my_layer):
+func texture_swap(my_sprite):
+	var my_layer
+	if "2" in my_sprite:
+		my_layer = 2
+	else:
+		my_layer = 1
 	blocked = false
 	blocked_by_window = false
-	if not random:
-		texture = "res://terrain/{text}.png".format({"text": my_sprite})
-	else:
-		directory = "res://terrain/{text}".format({"text": my_sprite})
-		var dir = DirAccess.open(directory)
-		files = []
-		if dir:
-			dir.list_dir_begin()
-			var file_name = dir.get_next()
-			while file_name != "":
-				if dir.current_is_dir():
-					pass
-				else:
-					if not file_name.ends_with("import"):
-						files.append(file_name)
-				file_name = dir.get_next()
-
-	is_random = random
+	texture = my_sprite
 	layer = my_layer
 
 func _process(delta):
@@ -92,8 +81,6 @@ func _process(delta):
 			var my_sprite = Sprite2D.new()
 			children.append(my_sprite)
 			add_child(my_sprite)
-			if is_random:
-				texture = directory +"/"+ files[randi() % files.size()]
 			my_sprite.set_texture(load(texture))
 			my_sprite.position = tile_position
 			my_sprite.scale = Vector2(my_scale,my_scale)

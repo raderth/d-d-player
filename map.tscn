@@ -1,9 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://ot7g1l1f56as"]
 
 [ext_resource type="Script" path="res://scripts/map.gd" id="1_gqdsc"]
-[ext_resource type="Texture2D" uid="uid://jtfkhah44igl" path="res://highlight.png" id="2_gn1bn"]
 [ext_resource type="Script" path="res://scripts/grid_highlighter.gd" id="3_gte10"]
-[ext_resource type="Script" path="res://image_menu/main_scene.gd" id="5_7jw6i"]
+[ext_resource type="Script" path="res://sprite_container.gd" id="4_1ydq4"]
 [ext_resource type="Texture2D" uid="uid://maemtfdy1lxv" path="res://buttons/image.png" id="8_lqp62"]
 [ext_resource type="Texture2D" uid="uid://chlvly1m4b46" path="res://buttons/image_selected.png" id="9_6puec"]
 [ext_resource type="Texture2D" uid="uid://b8ldsbob5kriw" path="res://save.png" id="9_8up0f"]
@@ -11,13 +10,15 @@
 [ext_resource type="Script" path="res://scripts/image.gd" id="12_8yi10"]
 [ext_resource type="Script" path="res://scripts/Window.gd" id="13_ca1ks"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7fiqi"]
+
 [node name="map" type="Node2D"]
 script = ExtResource("1_gqdsc")
 
 [node name="grid_highlighter" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.627451)
 z_index = 100
-texture = ExtResource("2_gn1bn")
+texture = SubResource("CompressedTexture2D_7fiqi")
 script = ExtResource("3_gte10")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -55,15 +56,8 @@ popup_window = true
 script = ExtResource("13_ca1ks")
 
 [node name="main" type="GridContainer" parent="CanvasLayer/ui/Container/Window"]
-script = ExtResource("5_7jw6i")
-
-[node name="trees" type="Button" parent="CanvasLayer/ui/Container/Window/main"]
-layout_mode = 2
-text = "trees"
-
-[node name="flat" type="Button" parent="CanvasLayer/ui/Container/Window/main"]
-layout_mode = 2
-text = "flat"
+columns = 4
+script = ExtResource("4_1ydq4")
 
 [node name="HBoxContainer" type="GridContainer" parent="CanvasLayer/ui"]
 layout_mode = 1
@@ -100,8 +94,7 @@ script = ExtResource("9_21cy7")
 [connection signal="the_scale" from="." to="grid_highlighter" method="_on_map_the_scale"]
 [connection signal="close_requested" from="CanvasLayer/ui/Container/Window" to="." method="_on_window_close_requested"]
 [connection signal="close_requested" from="CanvasLayer/ui/Container/Window" to="CanvasLayer/ui/Container/Window" method="_on_close_requested"]
-[connection signal="pressed" from="CanvasLayer/ui/Container/Window/main/trees" to="CanvasLayer/ui/Container/Window/main" method="_on_trees_pressed" flags=18]
-[connection signal="pressed" from="CanvasLayer/ui/Container/Window/main/flat" to="CanvasLayer/ui/Container/Window/main" method="_on_flat_pressed" flags=18]
+[connection signal="load_initial_tiles" from="CanvasLayer/ui/Container/Window" to="CanvasLayer/ui/Container/Window/main" method="_on_window_load_initial_tiles"]
 [connection signal="mouse_entered" from="CanvasLayer/ui/HBoxContainer/image" to="." method="_on_image_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/ui/HBoxContainer/image" to="." method="_on_image_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/ui/HBoxContainer/image" to="." method="_on_image_pressed"]

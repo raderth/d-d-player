@@ -110,11 +110,11 @@ func _process(delta):
 	#ZOOOOOOM
 	var scale_change = false
 	var pos_mod
-	if Input.is_action_just_released("scroll_down"):
+	if Input.is_action_just_released("scroll_down") and not blocked_by_window and not blocked and not blocked_by_file:
 		my_scale *= 0.9
 		pos_mod = 0.9
 		scale_change = true
-	if Input.is_action_just_released("scroll_up"):
+	if Input.is_action_just_released("scroll_up") and not blocked_by_window and not blocked and not blocked_by_file:
 		my_scale *= 1.1
 		pos_mod = 1.1
 		scale_change = true

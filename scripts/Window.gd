@@ -23,3 +23,7 @@ func sprite_changer(my_sprite,my_layer):
 
 
 
+
+
+func _on_main_texture_switch(path):
+	visible = false

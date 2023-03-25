@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjmrgvbp1efut"
-path="res://.godot/imported/small_tree.png-c552a2bcc78af3b0d2f956a0a6415c4a.ctex"
+uid="uid://hgv2mx6csxep"
+path="res://.godot/imported/water_below_corner.png-54f48ffc28aac624f93728a4a6d0f7f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image_menu/tiles/small_tree.png"
-dest_files=["res://.godot/imported/small_tree.png-c552a2bcc78af3b0d2f956a0a6415c4a.ctex"]
+source_file="res://image_menu/tiles/water/water_below_corner.png"
+dest_files=["res://.godot/imported/water_below_corner.png-54f48ffc28aac624f93728a4a6d0f7f8.ctex"]
 
 [params]
 

@@ -22,3 +22,7 @@ func _on_map_the_scale(scale_factor,positon_modifier):
 
 func texture_swap(my_sprite):
 	texture = load(my_sprite)
+
+
+func _on_map_swap_highlight(child):
+	texture = child

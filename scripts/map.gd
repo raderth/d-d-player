@@ -1,6 +1,7 @@
 extends Node2D
 
 signal the_scale(scale_factor,position_modifier)
+signal swap_highlight(child)
 
 @export
 var tile_size = 64
@@ -41,7 +42,9 @@ func _ready():
 			add_child(child)
 			child.texture = load(data_json[i])
 			var the_pos = i.replace("(","").replace(")","").split(",")
-			child.position = Vector2(int(the_pos[0]),int(the_pos[1]))
+			child.position = Vector2(int(the_pos[0]),int(the_pos[1])).snapped(Vector2(64, 64))
+			child.z_index = int(the_pos[2])
+			child.rotation = rad_to_deg(int(the_pos[3]))
 			children.append(child)
 	
 
@@ -57,6 +60,20 @@ func texture_swap(my_sprite):
 	layer = my_layer
 
 func _process(delta):
+	#pick tile
+	if Input.is_action_just_pressed("pick_tile"):
+		var position_check = (get_global_mouse_position() - position).snapped(Vector2(tile_size,tile_size))
+		for child in children:
+			if round(child.position) == round(position_check):
+				texture = child.texture
+				emit_signal("swap_highlight", texture)
+	#set layer
+	if Input.is_action_just_pressed("layer_1"):
+		layer = 1
+	if Input.is_action_just_pressed("layer_2"):
+		layer = 2
+		
+	#rotate
 	if Input.is_action_just_released("rotate"):
 		my_rotation += 90
 		if my_rotation == 360:
@@ -81,7 +98,10 @@ func _process(delta):
 			var my_sprite = Sprite2D.new()
 			children.append(my_sprite)
 			add_child(my_sprite)
-			my_sprite.set_texture(load(texture))
+			if "png" in texture:
+				my_sprite.set_texture(load(texture))
+			else:
+				my_sprite.set_texture(texture)
 			my_sprite.position = tile_position
 			my_sprite.scale = Vector2(my_scale,my_scale)
 			my_sprite.z_index = layer
@@ -110,11 +130,11 @@ func _process(delta):
 	#ZOOOOOOM
 	var scale_change = false
 	var pos_mod
-	if Input.is_action_just_released("scroll_down"):
+	if Input.is_action_just_released("scroll_down") and not blocked_by_window and not blocked and not blocked_by_file:
 		my_scale *= 0.9
 		pos_mod = 0.9
 		scale_change = true
-	if Input.is_action_just_released("scroll_up"):
+	if Input.is_action_just_released("scroll_up") and not blocked_by_window and not blocked and not blocked_by_file:
 		my_scale *= 1.1
 		pos_mod = 1.1
 		scale_change = true
@@ -171,7 +191,7 @@ func _on_file_dialog_directory(path):
 		child.scale = Vector2(my_scale,my_scale)
 		child.position *= pos_mod
 	for child in children:
-		data[child.position] = child.texture.resource_path
+		data[Vector4(child.position.x,child.position.y,child.z_index,child.rotation)] = child.texture.resource_path
 		
 	var file = FileAccess.open("C:/"+path, FileAccess.WRITE)
 	file.store_line(JSON.new().stringify(data))

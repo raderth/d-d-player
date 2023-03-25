@@ -3,6 +3,7 @@ signal texture_switch(path)
 
 var current_children = []
 var path = "res://image_menu/"
+var net_scroll = 0
 
 func _process(delta):
 	var the_path = Constants.get_path_for_tiles()
@@ -17,11 +18,21 @@ func _process(delta):
 		Constants.set_path_for_tiles("")
 		if not "png" in the_path:
 			load_new_path(path)
+			
+	if not current_children == []:
+		if Input.is_action_just_released("scroll_up"):
+			position.y += 20
+			net_scroll += 20
+		if Input.is_action_just_released("scroll_down"):
+			position.y -= 20
+			net_scroll -= 20
 		
 func pressed_button():
 	print("pressed")
 
 func load_new_path(path):
+	position.y -= net_scroll
+	net_scroll = 0
 	for file in dir_contents(path):
 		if not "import" in file:
 			if not "." in file:
@@ -31,6 +42,7 @@ func load_new_path(path):
 				var script = load("res://scripts/tile_explorer.gd").new(file,directory)
 				directory.set_script(script)
 				add_child(directory)
+				directory.size = Vector2(16,16)
 			else:
 				var tile = TextureButton.new()
 				current_children.append(tile)
@@ -38,6 +50,7 @@ func load_new_path(path):
 				var script = load("res://scripts/tile_explorer.gd").new(file,tile)
 				tile.set_script(script)
 				add_child(tile)
+				tile.size = Vector2(16,16)
 
 			
 func dir_contents(path):
@@ -58,3 +71,10 @@ func dir_contents(path):
 func _on_window_load_initial_tiles():
 	path = "res://image_menu/"
 	load_new_path(path)
+
+
+func _on_window_close_requested():
+	for child in current_children:
+		remove_child(child)
+		child.queue_free()
+	current_children = []

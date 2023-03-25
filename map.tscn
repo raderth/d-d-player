@@ -56,6 +56,7 @@ popup_window = true
 script = ExtResource("13_ca1ks")
 
 [node name="main" type="GridContainer" parent="CanvasLayer/ui/Container/Window"]
+layout_direction = 2
 columns = 4
 script = ExtResource("4_1ydq4")
 
@@ -91,10 +92,13 @@ ok_button_text = "Save"
 access = 2
 script = ExtResource("9_21cy7")
 
+[connection signal="swap_highlight" from="." to="grid_highlighter" method="_on_map_swap_highlight"]
 [connection signal="the_scale" from="." to="grid_highlighter" method="_on_map_the_scale"]
 [connection signal="close_requested" from="CanvasLayer/ui/Container/Window" to="." method="_on_window_close_requested"]
 [connection signal="close_requested" from="CanvasLayer/ui/Container/Window" to="CanvasLayer/ui/Container/Window" method="_on_close_requested"]
+[connection signal="close_requested" from="CanvasLayer/ui/Container/Window" to="CanvasLayer/ui/Container/Window/main" method="_on_window_close_requested"]
 [connection signal="load_initial_tiles" from="CanvasLayer/ui/Container/Window" to="CanvasLayer/ui/Container/Window/main" method="_on_window_load_initial_tiles"]
+[connection signal="texture_switch" from="CanvasLayer/ui/Container/Window/main" to="CanvasLayer/ui/Container/Window" method="_on_main_texture_switch"]
 [connection signal="mouse_entered" from="CanvasLayer/ui/HBoxContainer/image" to="." method="_on_image_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/ui/HBoxContainer/image" to="." method="_on_image_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/ui/HBoxContainer/image" to="." method="_on_image_pressed"]

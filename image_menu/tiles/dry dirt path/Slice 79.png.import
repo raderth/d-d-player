@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jgpqjgqvp4gh"
-path="res://.godot/imported/Slice 81.png-f330280f12aed89719464732578fcf3d.ctex"
+uid="uid://b7d730uphnnyu"
+path="res://.godot/imported/Slice 79.png-65bf7841f969b42412c715fe7cfe3834.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image_menu/tiles/water/Slice 81.png"
-dest_files=["res://.godot/imported/Slice 81.png-f330280f12aed89719464732578fcf3d.ctex"]
+source_file="res://image_menu/tiles/dry dirt path/Slice 79.png"
+dest_files=["res://.godot/imported/Slice 79.png-65bf7841f969b42412c715fe7cfe3834.ctex"]
 
 [params]
 

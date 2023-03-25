@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c03x3t1jeydvl"
-path="res://.godot/imported/big_tree.png-387fcb8d8a534e09cffc66e571ee0c16.ctex"
+uid="uid://cbke1vxewsj1m"
+path="res://.godot/imported/dock_right_end2.png-12f051a49aea55a2c8e91d5248dcf3cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image_menu/tiles/big_tree.png"
-dest_files=["res://.godot/imported/big_tree.png-387fcb8d8a534e09cffc66e571ee0c16.ctex"]
+source_file="res://image_menu/tiles/water/dock/dock_right_end2.png"
+dest_files=["res://.godot/imported/dock_right_end2.png-12f051a49aea55a2c8e91d5248dcf3cf.ctex"]
 
 [params]
 
